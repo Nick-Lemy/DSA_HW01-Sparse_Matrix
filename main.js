@@ -135,3 +135,44 @@ class SparseMatrix {
     return result;
   }
 }
+
+async function main() {
+  if (process.argv.length < 6) {
+    console.log(
+      "Usage: node script.js <operation> <matrix1_file> <matrix2_file> <output_file>"
+    );
+    process.exit(1);
+  }
+
+  try {
+    const operation = process.argv[2];
+    const matrix1 = await SparseMatrix.fromFile(process.argv[3]);
+    const matrix2 = await SparseMatrix.fromFile(process.argv[4]);
+    const outputFile = process.argv[5];
+
+    let result;
+    switch (operation) {
+      case "add":
+        result = matrix1.add(matrix2);
+        break;
+      case "subtract":
+        result = matrix1.subtract(matrix2);
+        break;
+      case "multiply":
+        result = matrix1.multiply(matrix2);
+        break;
+      default:
+        throw new Error("Invalid operation. Use: add, subtract, or multiply");
+    }
+
+    // Output result to console
+    console.log(result.toString());
+
+    // Write result to output file
+    await fs.promises.writeFile(outputFile, result.toString());
+    console.log(`Result written to ${outputFile}`);
+  } catch (error) {
+    console.error("Error:", error.message);
+    process.exit(1);
+  }
+}
