@@ -1,3 +1,5 @@
+import fs from "fs";
+
 class SparseMatrix {
   constructor(numRows, numCols) {
     this.rows = numRows;
