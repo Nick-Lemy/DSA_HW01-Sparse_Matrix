@@ -21,7 +21,7 @@ cd DSA_HW01-Sparse_Matrix/dsa/sparse_matrix/code/src
 Install dependences
 
 ```bash
-npm run install
+npm install
 ```
 
 ### 2- Runing the script
@@ -29,7 +29,7 @@ npm run install
 Here is the runing format
 
 ```bash
-node script.js <operation> <matrix1_file> <matrix2_file> <output_file>
+node main.js <operation> <matrix1_file> <matrix2_file> <output_file>
 # Notes: options for the different operations are: add, subtract and multiply
 ```
 

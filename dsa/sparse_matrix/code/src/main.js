@@ -139,7 +139,7 @@ class SparseMatrix {
 async function main() {
   if (process.argv.length < 6) {
     console.log(
-      "Usage: node script.js <operation> <matrix1_file> <matrix2_file> <output_file>"
+      "Usage: node main.js <operation> <matrix1_file> <matrix2_file> <output_file>"
     );
     process.exit(1);
   }
@@ -164,9 +164,6 @@ async function main() {
       default:
         throw new Error("Invalid operation. Use: add, subtract, or multiply");
     }
-
-    // Output result to console
-    console.log(result.toString());
 
     // Write result to output file
     await fs.promises.writeFile(outputFile, result.toString());
