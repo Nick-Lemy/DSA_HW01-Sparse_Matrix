@@ -58,4 +58,26 @@ class SparseMatrix {
       this.data.get(row).set(col, value);
     }
   }
+
+  add(other) {
+    if (this.rows !== other.rows || this.cols !== other.cols) {
+      throw new Error("Matrix dimensions must match for addition");
+    }
+
+    const result = new SparseMatrix(this.rows, this.cols);
+
+    for (const [row, rowData] of this.data) {
+      for (const [col, value] of rowData) {
+        result.setElement(row, col, value);
+      }
+    }
+    for (const [row, rowData] of other.data) {
+      for (const [col, value] of rowData) {
+        const sum = result.getElement(row, col) + value;
+        result.setElement(row, col, sum);
+      }
+    }
+
+    return result;
+  }
 }
