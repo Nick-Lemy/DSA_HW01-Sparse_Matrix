@@ -102,4 +102,27 @@ class SparseMatrix {
 
     return result;
   }
+
+  multiply(other) {
+    if (this.cols !== other.rows) {
+      throw new Error("Invalid dimensions for multiplication");
+    }
+
+    const result = new SparseMatrix(this.rows, other.cols);
+
+    // Only iterate over non-zero elements
+    for (const [row1, rowData1] of this.data) {
+      for (const [col1, val1] of rowData1) {
+        const rowData2 = other.data.get(col1);
+        if (rowData2) {
+          for (const [col2, val2] of rowData2) {
+            const current = result.getElement(row1, col2);
+            result.setElement(row1, col2, current + val1 * val2);
+          }
+        }
+      }
+    }
+
+    return result;
+  }
 }
