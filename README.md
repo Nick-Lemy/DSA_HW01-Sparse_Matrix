@@ -11,6 +11,7 @@ npm run install
 ```
 
 2- Runing the script
+
 Here is the runing format
 
 ```bash
