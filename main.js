@@ -35,4 +35,27 @@ class SparseMatrix {
       throw new Error(`Error reading file: ${error.message}`);
     }
   }
+
+  getElement(row, col) {
+    const rowData = this.data.get(row);
+    return rowData ? rowData.get(col) || 0 : 0;
+  }
+
+  setElement(row, col, value) {
+    if (value === 0) {
+      const rowData = this.data.get(row);
+
+      if (rowData) {
+        rowData.delete(col);
+        if (rowData.size === 0) {
+          this.data.delete(row);
+        }
+      }
+    } else {
+      if (!this.data.has(row)) {
+        this.data.set(row, new Map());
+      }
+      this.data.get(row).set(col, value);
+    }
+  }
 }
