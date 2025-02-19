@@ -80,4 +80,26 @@ class SparseMatrix {
 
     return result;
   }
+
+  subtract(other) {
+    if (this.rows !== other.rows || this.cols !== other.cols) {
+      throw new Error("Matrix dimensions must match for subtraction");
+    }
+
+    const result = new SparseMatrix(this.rows, this.cols);
+    for (const [row, rowData] of this.data) {
+      for (const [col, value] of rowData) {
+        result.setElement(row, col, value);
+      }
+    }
+
+    for (const [row, rowData] of other.data) {
+      for (const [col, value] of rowData) {
+        const diff = result.getElement(row, col) - value;
+        result.setElement(row, col, diff);
+      }
+    }
+
+    return result;
+  }
 }
