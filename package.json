@@ -1,0 +1,26 @@
+{
+  "name": "dsa_hw01-sparse_matrix",
+  "version": "1.0.0",
+  "main": "test.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nick-Lemy/DSA_HW01-Sparse_Matrix.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nick-Lemy/DSA_HW01-Sparse_Matrix/issues"
+  },
+  "homepage": "https://github.com/Nick-Lemy/DSA_HW01-Sparse_Matrix#readme",
+  "description": "",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "readline": "^1.3.0"
+  }
+}
