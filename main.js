@@ -125,4 +125,13 @@ class SparseMatrix {
 
     return result;
   }
+  toString() {
+    let result = `rows=${this.rows}\ncols=${this.cols}\n`;
+    for (const [row, rowData] of this.data) {
+      for (const [col, value] of rowData) {
+        result += `(${row}, ${col}, ${value})\n`;
+      }
+    }
+    return result;
+  }
 }
